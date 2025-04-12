@@ -32,15 +32,15 @@ jobs:
       - name: Upload build artifacts
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: dist
-          path: ./dist/
+          name: Package
+          path: staging
           if-no-files-found: error  # if no files are found, something's very wrong!
 
       - name: Generate hashes for provenance
         id: hashes
         run: |
           # Get hashes for wheels and tarballs, encode in a single-line base64 string
-          echo "hashes=$(sha256sum ./dist/* | base64 -w0)" >> $GITHUB_OUTPUT
+          echo "hashes=$(sha256sum ./staging/* | base64 -w0)" >> $GITHUB_OUTPUT
 
   provenance:
     name: Publish provenance
@@ -76,7 +76,7 @@ jobs:
       - name: Upload artifacts to GitHub
         uses: softprops/action-gh-release@c95fe1489396fe8a9eb87c0abf8aa5b2ef267fda # v0.1.15
         with:
-          files: dist/*
+          files: staging/*
 
   maven-release:
     name: Publish to Maven(Test)
