@@ -13,7 +13,7 @@ public final class App {
      * Main method.
      */
     public static void main(String[] args) {
-        String path = "conversion/src/main/java/conversion/example/images/image-1.jpg";
+        String path = "src/main/java/conversion/example/images/image-1.jpg";
         ImageConversion imageConversion = new ImageConversion();
         try {
             String base64Image = imageConversion.convertImageToBase64(path);
