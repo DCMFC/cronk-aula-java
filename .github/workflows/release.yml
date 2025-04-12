@@ -29,6 +29,9 @@ jobs:
         run: |
           mvn --batch-mode --update-snapshots verify
 
+      - name: Create package folder
+        run: mkdir staging && cp target/*.jar staging
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
