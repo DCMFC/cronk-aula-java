@@ -11,6 +11,6 @@ updates:
       interval: "weekly"
 
   - package-ecosystem: "maven"
-    directory: "conversion/pom.xml"
+    directory: "./conversion/pom.xml"
     schedule:
       interval: "weekly"
