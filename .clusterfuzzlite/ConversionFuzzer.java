@@ -1,6 +1,5 @@
-package conversion.example;
-
 import com.code_intelligence.jazzer.api.FuzzedDataProvider;
+import conversion.example.ImageConversion;
 import java.io.IOException;
 
 /**
