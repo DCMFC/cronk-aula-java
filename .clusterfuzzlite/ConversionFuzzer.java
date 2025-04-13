@@ -1,6 +1,7 @@
 package conversion.example;
 
 import com.code_intelligence.jazzer.api.FuzzedDataProvider;
+import java.io.IOException;
 
 /**
  * Fuzzer class.
