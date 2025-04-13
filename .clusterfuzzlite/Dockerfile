@@ -2,6 +2,6 @@ FROM gcr.io/oss-fuzz-base/base-builder-jvm:latest@sha256:45ce27788a3a28516cf299c
 
 RUN apt-get update && apt-get install -y maven
 
-COPY . $SRC/cronk
-WORKDIR cronk
+COPY . $SRC
+WORKDIR $SRC
 COPY .clusterfuzzlite/build.sh .clusterfuzzlite/*.java $SRC/
