@@ -5,3 +5,7 @@ RUN apt-get update && apt-get install -y maven
 COPY . $SRC
 WORKDIR $SRC
 COPY .clusterfuzzlite/build.sh .clusterfuzzlite/*.java $SRC/
+
+COPY . $SRC/conversion/example
+WORKDIR /conversion/example
+COPY .clusterfuzzlite/build.sh .clusterfuzzlite/*.dict $SRC/conversion/example
