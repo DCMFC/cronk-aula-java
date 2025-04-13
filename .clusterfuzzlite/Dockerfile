@@ -4,4 +4,4 @@ COPY . $SRC
 WORKDIR $SRC
 COPY .clusterfuzzlite/build.sh .clusterfuzzlite/*.java $SRC/
 
-RUN apt-get update && apt-get install -y maven && mvn -B dependency:go-offline && mvn package
+RUN apt-get update && apt-get install -y maven && mvn package
