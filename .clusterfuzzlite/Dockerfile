@@ -2,6 +2,6 @@ FROM gcr.io/oss-fuzz-base/base-builder-jvm:latest@sha256:45ce27788a3a28516cf299c
 
 RUN apt-get update && apt-get install -y maven
 
-COPY . $SRC/conversion/example
-WORKDIR conversion/example
-COPY .clusterfuzzlite/build.sh .clusterfuzzlite/*.dict $SRC/
+COPY . $SRC
+WORKDIR conversion
+COPY .clusterfuzzlite/build.sh .clusterfuzzlite/*.java $SRC/
