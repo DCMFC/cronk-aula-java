@@ -5,5 +5,3 @@ RUN apt-get update && apt-get install -y maven
 COPY . $SRC
 WORKDIR $SRC
 COPY .clusterfuzzlite/build.sh .clusterfuzzlite/*.java $SRC/
-
-RUN mvn -f pom.xml clean package
