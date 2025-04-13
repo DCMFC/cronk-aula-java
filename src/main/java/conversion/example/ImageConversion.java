@@ -1,9 +1,11 @@
 package conversion.example;
 
-import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.InvalidPathException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Base64;
-import org.apache.commons.io.FileUtils;
 
 /**
  * Convert Image class.
@@ -13,8 +15,8 @@ public class ImageConversion {
     /**
      * Convert image to base64 method.
      */
-    public String convertImageToBase64(String path) throws IOException {
-        byte[] bytes = FileUtils.readFileToByteArray(new File(path));
+    public String convertImageToBase64(String path) throws IOException, InvalidPathException {
+        byte[] bytes = Files.readAllBytes(Paths.get(path));
         String encodedString = Base64.getEncoder().encodeToString(bytes);
         return encodedString;
     }
@@ -25,7 +27,8 @@ public class ImageConversion {
     public void convertBase64ToImage(String base64) throws IOException {
         String fileName = "image-output.jpg";
         byte[] decodedBytes = Base64.getDecoder().decode(base64);
-        FileUtils.writeByteArrayToFile(new File(fileName), decodedBytes);
+        Path destinationFile = Paths.get(".", fileName);
+        Files.write(destinationFile, decodedBytes);
     }
 
 }
