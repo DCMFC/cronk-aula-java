@@ -2,6 +2,7 @@ package conversion.example;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.InvalidPathException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -15,7 +16,7 @@ class AppTest {
      * Test to convert from file to base64.
      */
     @Test
-    public void fileToBase64StringConversion() throws IOException {
+    public void fileToBase64StringConversion() throws IOException, InvalidPathException {
         String path = "src/test/java/conversion/example/test.jpg";
         ImageConversion imageConversion = new ImageConversion();
         String result = imageConversion.convertImageToBase64(path);
@@ -27,7 +28,7 @@ class AppTest {
      * Test to convert base64 to file.
      */
     @Test
-    public void base64ToFileConversion() throws IOException {
+    public void base64ToFileConversion() throws IOException, InvalidPathException {
         String path = "src/test/java/conversion/example/test.jpg";
         ImageConversion imageConversion = new ImageConversion();
         String result = imageConversion.convertImageToBase64(path);

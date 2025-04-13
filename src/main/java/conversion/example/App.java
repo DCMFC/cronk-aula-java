@@ -1,6 +1,7 @@
 package conversion.example;
 
 import java.io.IOException;
+import java.nio.file.InvalidPathException;
 
 /**
  * Main class.
@@ -21,6 +22,8 @@ public final class App {
 
             imageConversion.convertBase64ToImage(base64Image);
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InvalidPathException e) {
             e.printStackTrace();
         }
     }
