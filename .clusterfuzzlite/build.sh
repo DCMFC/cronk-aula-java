@@ -8,6 +8,8 @@ PROJECT_JARS="conversion.jar"
 
 # Step 2: Build the fuzzers
 
+curl -o "$OUT"/libs/commons-io-2.19.0.jar https://repo1.maven.org/maven2/commons-io/commons-io/2.19.0/commons-io-2.19.0.jar
+
 # The classpath at build-time includes the project jars in $OUT as well as the
 # Jazzer API.
 BUILD_CLASSPATH=$(echo $PROJECT_JARS | xargs printf -- "$OUT/%s:"):$JAZZER_API_PATH
