@@ -1,7 +1,5 @@
 # Step 1: Build the project
 
-mvn install
-
 cp "target/conversion-1.jar" $OUT/conversion.jar
 
 PROJECT_JARS="conversion.jar"
