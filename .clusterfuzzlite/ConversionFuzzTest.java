@@ -7,7 +7,7 @@ import java.io.IOException;
 /**
  * Fuzz tests.
  */
-public class FuzzTestCase {
+public class ConversionFuzzTest {
     /**
      * Fuzz test method.
      */
