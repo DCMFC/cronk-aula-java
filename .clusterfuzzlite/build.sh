@@ -1,6 +1,6 @@
 # Step 1: Build the project
 
-mvn install
+mvn package
 
 cp "target/conversion-1.jar" $OUT/conversion.jar
 
@@ -34,23 +34,6 @@ LD_LIBRARY_PATH=\"$JVM_LD_LIBRARY_PATH\":\$this_dir \
 --cp=$RUNTIME_CLASSPATH \
 --target_class=$fuzzer_basename \
 --jvm_args=\"\$mem_settings:-Djava.awt.headless=true\" \
-\$@" > $OUT/$fuzzer_basename
-  chmod +x $OUT/$fuzzer_basename
-done
-
-for fuzzer in $(find $SRC -name '*FuzzTest.java'); do
-  fuzzer_basename=$(basename -s .java $fuzzer)
-  javac -cp "$BUILD_CLASSPATH:/usr/local/bin/jazzer_agent_deploy.jar" $fuzzer
-  cp $SRC/$fuzzer_basename.class $OUT/
-
-  # Create execution wrapper.
-  echo "#!/bin/bash
-# LLVMFuzzerTestOneInput for fuzzer detection.
-this_dir=\$(dirname \"\$0\")
-
-java -cp \$this_dir:\$this_dir/jazzer_agent_deploy.jar:\$this_dir/jazzer_junit.jar:\$this_dir/libs/* \
-com.code_intelligence.jazzer.Jazzer \
---target_class=$fuzzer_basename \
 \$@" > $OUT/$fuzzer_basename
   chmod +x $OUT/$fuzzer_basename
 done
