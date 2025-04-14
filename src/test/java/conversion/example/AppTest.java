@@ -1,12 +1,8 @@
 package conversion.example;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.InvalidPathException;
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.*;
 
 /**
  * Unit test for simple App.
@@ -21,7 +17,7 @@ class AppTest {
         ImageConversion imageConversion = new ImageConversion();
         String result = imageConversion.convertImageToBase64(path);
 
-        assertNotNull(result);
+        Assertions.assertNotNull(result);
     }
 
     /**
@@ -36,6 +32,6 @@ class AppTest {
         imageConversion.convertBase64ToImage(result);
         String expectedOutput = "image-output.jpg";
         File image = new File(expectedOutput);
-        assertTrue(image.exists());
+        Assertions.assertTrue(image.exists());
     }
 }
